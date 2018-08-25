@@ -96,8 +96,6 @@ class Expression:
                 self.__endPointOf[i] = openBracketIndices[-1]
                 del openBracketIndices[-1]
 
-##        print(self.__valueAtIndex)
-##        print(self.__endPointOf)
         return self.__valueAtIndex[0]
 
 
@@ -138,7 +136,6 @@ class Expression:
                     continue
 
                 if abb[i] == sign:
-##                    print(sign, self.__valueAtIndex[i - 1], self.__valueAtIndex[i + 1])
                     try :
                         self.__valueAtIndex[self.__endPointOf[i - 1]] = self.__signs[abb[i]](self.__valueAtIndex[i - 1], self.__valueAtIndex[i + 1])
                     except ZeroDivisionError:
@@ -156,8 +153,6 @@ class Expression:
 ##                        print("endPointOf[",self.__endPointOf[i - 1],"] = ", self.__endPointOf[self.__endPointOf[i - 1]])
 ##                        print("endPointOf[",self.__endPointOf[i + 1],"] = ", self.__endPointOf[self.__endPointOf[i + 1]])
                 i += 1
-
-##        print("retured")
 
         return self.__valueAtIndex[start]
                         
