@@ -20,7 +20,6 @@ class Expression:
     def __init__(self, exp):
 
         try :
-
             self.__exp = self.__correctSyntax(["("] + list(exp.lower()) + [")"])
             self.__valueAtIndex = [None] * len(self.__exp)
             self.__endPointOf = [None] * len(self.__exp)
@@ -44,18 +43,15 @@ class Expression:
         return exp
 
 
-
     def __assignConstants(self):
 
         abb = self.__exp
-
         i = 0
         while i < len(abb):
             if abb[i] in Expression.__constants.keys():
                 self.__valueAtIndex[i] = Expression.__constants[abb[i]]
                 self.__endPointOf[i] = i
                 
-
             if abb[i] in Expression.__numbers:
                 number = ""
                 startingOfNumber = i
@@ -76,7 +72,6 @@ class Expression:
     def valueAtPoint(self, point):
 
         abb = self.__exp
-
         for i in range(len(abb)):
             if abb[i] == "x":
                 self.__valueAtIndex[i] = point
@@ -102,18 +97,14 @@ class Expression:
     def __expressionParser(self, start, end, point):
 
         abb = self.__exp
-
         i = start
         while i < end:
-
             if abb[i] == "(":
                 i = self.__endPointOf[i]
                 continue
 
             if abb[i] + abb[i + 1] in Expression.__functions:
-
                 for x in range(i, end):
-
                     if abb[x] == "(":
                         try :
                             self.__valueAtIndex[i] = Expression.__functionsDict[''.join(abb)[i : x]](self.__valueAtIndex[x])
@@ -130,7 +121,6 @@ class Expression:
         for sign in Expression.__signs:
             i = start
             while i < end:
-
                 if abb[i] == "(":
                     i = self.__endPointOf[i]
                     continue
