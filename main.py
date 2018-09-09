@@ -112,6 +112,9 @@ class Expression:
                             return None
                         except OverflowError:
                             return None
+                        except ZeroDivisionError:
+                            return None
+                    
                         self.__valueAtIndex[self.__endPointOf[x]] = self.__valueAtIndex[i]
                         self.__endPointOf[i] = self.__endPointOf[x]
                         self.__endPointOf[self.__endPointOf[x]] = i
@@ -132,6 +135,10 @@ class Expression:
                         self.__valueAtIndex[self.__endPointOf[i - 1]] = self.__signs[abb[i]](self.__valueAtIndex[i - 1], self.__valueAtIndex[i + 1])
                     except ZeroDivisionError:
                         return None
+                    except OverflowError:
+                        return None
+                    except ValueError:
+                            return None
                         
                     self.__valueAtIndex[self.__endPointOf[i + 1]] = self.__valueAtIndex[self.__endPointOf[i - 1]]
                     self.__endPointOf[self.__endPointOf[i - 1]] = self.__endPointOf[i + 1]
@@ -149,7 +156,9 @@ class Expression:
         return self.__valueAtIndex[start]
                         
                 
-
-while True:                
-    expression = Expression(input("Expression: "))
-    print(expression.valueAtPoint(1+1j))
+exp = "log(x)"
+arg = ""
+while True:
+    arg += exp
+    expression = Expression(arg)
+    print(expression.valueAtPoint(2))
