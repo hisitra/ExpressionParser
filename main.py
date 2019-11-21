@@ -156,9 +156,6 @@ class Expression:
         return self.__valueAtIndex[start]
                         
                 
-exp = "log(x)"
-arg = ""
-while True:
-    arg += exp
-    expression = Expression(arg)
-    print(expression.valueAtPoint(2))
+exp = input("Enter:")
+expression = Expression(exp)
+print(expression.valueAtPoint(2))
